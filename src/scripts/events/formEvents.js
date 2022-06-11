@@ -2,7 +2,7 @@ import { createVocab, getVocab, updateVocab } from '../../api/vocabData';
 import { showVocab } from '../components/pages/vocab';
 
 const formEvents = (uid) => {
-  document.querySelector('main-container').addEventListener('submit', (e) => {
+  document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
 
     if (e.target.id.includes('submit-vocab')) {
