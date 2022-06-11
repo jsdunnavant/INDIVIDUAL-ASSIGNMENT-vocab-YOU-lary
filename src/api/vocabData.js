@@ -4,7 +4,7 @@ import firebaseConfig from './apiKeys';
 const dbUrl = firebaseConfig.databaseURL;
 
 const getVocab = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/vocab.json?orderBy="uid"&equalTo="${uid}`)
+  axios.get(`${dbUrl}/vocab.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -14,7 +14,6 @@ const getVocab = (uid) => new Promise((resolve, reject) => {
     })
     .catch((error) => reject(error));
 });
-
 const createVocab = (vocabObj) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/vocab.json,`, vocabObj)
     .then((response) => {
@@ -27,14 +26,8 @@ const createVocab = (vocabObj) => new Promise((resolve, reject) => {
 });
 
 const getSingleVocab = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/vocab/${firebaseKey}.json`)
-    .then((response) => {
-      if (response.data) {
-        resolve(Object.values(response.data));
-      } else {
-        resolve([]);
-      }
-    })
+  axios.get(`${dbUrl}/cards/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 

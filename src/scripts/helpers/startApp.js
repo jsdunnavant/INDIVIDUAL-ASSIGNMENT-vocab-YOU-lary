@@ -1,4 +1,4 @@
-import getVocab from '../../api/vocabData';
+import { getVocab } from '../../api/vocabData';
 import logoutButton from '../components/buttons/logoutButton';
 import domBuilder from '../components/domBuilder';
 import navBar from '../components/navBar';

@@ -11,7 +11,7 @@ const navigationEvents = (uid) => {
     getVocab(uid).then((vocabArray) => showVocab(vocabArray));
   });
 
-  document.querySelector('#submit-vocab').addEventListener('click', () => {
+  document.querySelector('#new-entry').addEventListener('click', () => {
     createVocabForm(uid);
   });
 };
