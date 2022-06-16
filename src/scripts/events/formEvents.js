@@ -1,4 +1,4 @@
-import { createVocab, getVocab, updateVocab } from '../../api/vocabData';
+import { createVocab, updateVocab } from '../../api/vocabData';
 import { showVocab } from '../components/pages/vocab';
 
 const formEvents = (uid) => {
@@ -9,13 +9,11 @@ const formEvents = (uid) => {
       const vocabObj = {
         category: document.querySelector('#category').value,
         definition: document.querySelector('#definition').value,
-        timeSubmitted: new Date(),
+        timeSubmitted: Math.floor(Date.now() / 1000),
         word: document.querySelector('#word').value,
-        uid,
+        uid
       };
-      createVocab(vocabObj, uid).then((vocabArray) => {
-        showVocab(vocabArray);
-      });
+      createVocab(vocabObj).then((vocabArray) => showVocab(vocabArray));
     }
 
     if (e.target.id.includes('update-vocab')) {
@@ -23,14 +21,12 @@ const formEvents = (uid) => {
       const vocabObj = {
         category: document.querySelector('#category').value,
         definition: document.querySelector('#definition').value,
-        timeSubmitted: new Date(),
+        timeSubmitted: Math.floor(Date.now() / 1000),
         word: document.querySelector('#word').value,
         uid,
         firebaseKey
       };
-      updateVocab(vocabObj, uid).then(() => {
-        getVocab(uid).then((vocabArray) => showVocab(vocabArray));
-      });
+      updateVocab(vocabObj).then(showVocab);
     }
   });
 };

@@ -7,8 +7,8 @@ const emptyVocab = () => {
 
 const showVocab = (array) => {
   clearDom();
-  const vocString = '<button class="btn btn-success btn-lg mb-4" id="add-vocab-btn">Add Vocab Word</button>';
-  renderToDOM('#add-button', vocString);
+  // const vocString = '<button class="btn btn-success btn-lg mb-4" id="add-vocab-btn">Add Vocab Word</button>';
+  // renderToDOM('#add-vocab-btn', vocString);
   if (array.length) {
     let domString = '';
     array.forEach((item) => {
@@ -20,7 +20,7 @@ const showVocab = (array) => {
           <p class="card-text">${item.definition}.</p>
             <i class="btn btn-success fas fa-eye" id="view-vocab-btn--${item.firebaseKey}"></i>
             <i id="edit-vocab-btn--${item.firebaseKey}" class="fas fa-edit btn btn-info"></i>
-            <i id="delete-vocab-btn--${item.firebaseKey}" class="btn btn-danger fas fa-trash-alt"></i>
+            <i id="delete-vocab--${item.firebaseKey}" class="btn btn-danger fas fa-trash-alt"></i>
         </div>
       </div>
       `;
