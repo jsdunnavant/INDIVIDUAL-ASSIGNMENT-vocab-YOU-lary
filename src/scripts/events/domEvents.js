@@ -6,7 +6,7 @@ import clearDom from '../helpers/clearDom';
 
 const domEvents = (uid) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
-    if (e.target.dispatchEvent.includes('delete-vocab')) {
+    if (e.target.id.includes('delete-vocab')) {
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to Delete')) {
         const [, firebaseKey] = e.target.dispatchEvent.split('--');

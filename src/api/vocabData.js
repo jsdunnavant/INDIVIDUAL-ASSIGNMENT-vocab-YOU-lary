@@ -14,19 +14,20 @@ const getVocab = (uid) => new Promise((resolve, reject) => {
     })
     .catch((error) => reject(error));
 });
+
 const createVocab = (vocabObj) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/vocab.json,`, vocabObj)
+  axios.post(`${dbUrl}/vocab.json,`, vocabObj)
     .then((response) => {
       const payload = { firebaseKey: response.data.word };
       axios.patch(`${dbUrl}/vocab/${response.data.word}.json`, payload)
         .then(() => {
-          getVocab(vocabObj).then(resolve);
+          getVocab(vocabObj.uid).then(resolve);
         });
     }).catch(reject);
 });
 
 const getSingleVocab = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/cards/${firebaseKey}.json`)
+  axios.get(`${dbUrl}/vocab/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
